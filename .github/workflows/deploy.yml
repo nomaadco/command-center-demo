@@ -27,6 +27,7 @@ jobs:
         run: |
           if [ -z "$SITE_PASSWORD" ]; then echo "SITE_PASSWORD secret is missing"; exit 1; fi
           npx --yes staticrypt@3.5.4 site/index.html -p "$SITE_PASSWORD" --short -d _site --remember 30 --config false --template-title "Command Center Demo" --template-instructions "Enter the demo password." --template-color-primary "#C9A15C" --template-color-secondary "#0f1218"
+          cp -r site/docs _site/docs
           ls -la _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
